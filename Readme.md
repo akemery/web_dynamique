@@ -2,6 +2,7 @@
 
 1- Utilisez l'outils https://www.w3.org/WAI/test-evaluate/preliminary/ 
    pour évaluer l'accessibilté des sites web suivants et faites un rapport détaillé pour chacun:
+   
       * https://www.gouv.bj//
       * https://uac.bj/
       * https://www.bank-of-africa.net/
