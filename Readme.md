@@ -21,7 +21,7 @@
      * Téléphone du proprité
      * Email du propriété
      * Type de titre de propriété
-     * Photographie du propriétaires
+     * Photographie du propriétaire
      * Photographie aérienne de la parcelle 
      * Date d'acquisition de la parcelle
      * Date de dernière défrichage du champs
@@ -30,15 +30,15 @@
      
 a- Utiliser du Javascript pour valider le formulaire avant son envoie.
 b- Utiliser de l'AJAX pour l'envoie des données au serveur.
-c- Utiliser du PHP pour valider les données au niveau serveur avant leur insertion dans la base de données. Il faut se rasurer que les données sont correctement valider avant d'être insérer dans la base de données afin d'éviter les vulnérabilités inhérentes aux applications web (SQL injection, XSS, etc).
+c- Utiliser du PHP pour valider les données au niveau serveur avant leur insertion dans la base de données. Il faut se rassurer que les données sont correctement valider avant d'être insérer dans la base de données afin d'éviter les vulnérabilités inhérentes aux applications web (SQL injection, XSS, etc).
 
-c- Elaborer un état qui permet de visualiser sur la carte de KLouékanme les différentes parcelles enregistrées.
+c- Elaborer un état qui permet de visualiser sur la carte de KLouékanme les différentes parcelles enregistrées et de faire recherche par propriétaire, par localité ou par titre de propriété.
 
 Pour tester vous pouvez vous inspirer du shapefile de KLouékanme se trouvant dans le dossier   ./data
 
 
 3- Utiliser SVG et SMIL pour animer la carte.
 
-4- Appliquer les principes d'accessibilité et de l'internationnalisation à votre projets.
+4- Appliquer les principes d'accessibilité et d'internationnalisation à votre projet.
 
 
