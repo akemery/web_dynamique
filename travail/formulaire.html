@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Collecte d'informations sur les champs aux alentours de KLouékanme</title>
+	<!-- Mobile Specific Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<!-- Font-->
+	<link rel="stylesheet" type="text/css" href="css/nunito-font.css">
+	<!-- Main Style Css -->
+    <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body class="form-v9">
+	<div class="page-content">
+		<div class="form-v9-content" style="background-image: url('images/form-v9.jpg')">
+			<form class="form-detail" action="#" method="post">
+				<h2>Les informations sur votre champ</h2>
+				<div class="form-row-total">
+					<div class="form-row">
+						<input type="number" name="sup" id="sup" class="input-text" placeholder="Quelle est la superficie en m² du champ ?" required>
+					</div>
+					<div class="form-row">
+						<select type="text" name="geo" id="geo" class="input-text" required>
+							<option value="">Coordonnées géographiques ?</option>
+							<option value="B1">B1</option>
+							<option value="B2">B2</option>
+							<option value="B3">B3</option>
+							<option value="B4">B4</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-row-total">
+					<div class="form-row">
+						<select type="text" name="culture" id="culture" class="input-text" required>
+							<option value="">Type de cultures ?</option>
+							<option value="cereales">céréales</option>
+							<option value="tubercules">tubercules</option>
+							<option value="legumes">légumes</option>
+							<option value="fruits">fruits</option>
+							<option value="fleurs">fleurs</option>
+							<option value="legumes_secs">légumes secs</option>
+						</select>
+					</div>
+					<div class="form-row">
+						<input type="text" name="nom" id="nom" class="input-text" placeholder="Votre nom et prénom (s) ?" required>
+					</div>
+				</div>
+				<div class="form-row-total">
+					<div class="form-row">
+						<input type="text" name="adresse" id="adresse" class="input-text" placeholder="Quelle est votre adresse ?" required>
+					</div>
+					<div class="form-row">
+						<input type="text" name="tel" id="tel" class="input-text" placeholder="Quelle est votre numéro de téléphone ?" required>
+					</div>
+				</div>
+				<div class="form-row-total">
+					<div class="form-row">
+						<input type="email" name="email" id="email" class="input-text" placeholder="Quelle est votre email ?" required>
+					</div>
+					<div class="form-row">
+						<input type="text" name="type_titre" id="type_titre" class="input-text" placeholder="Type de titre de propriété ?" required>
+					</div>
+				</div>
+				<div class="form-row-total">
+					<div class="form-row">
+						<input type="text" name="photo_proprio" id="photo_proprio" class="input-text" placeholder="Photographie du propriétaire ?" required>
+					</div>
+					<div class="form-row">
+						<input type="text" name="photo_parcelle" id="photo_parcelle" class="input-text" placeholder="Photographie aérienne de la parcelle ?" required>
+					</div>
+				</div>
+				<div class="form-row-total">
+					<div class="form-row">
+						<input type="date" name="date_acquisition" id="date_acquisition" class="input-text" placeholder="Date d'acquisition de la parcelle ?" required>
+					</div>
+					<div class="form-row">
+						<input type="date" name="dernier_defrichage" id="dernier_defrichage" class="input-text" placeholder="Date de dernière défrichage du champs ?" required>
+					</div>
+				</div>
+				<div class="form-row-total">
+					<div class="form-row">
+						<input type="text" name="localite" id="localite" class="input-text" placeholder="Localité du champs ?" required>
+					</div>
+					<div class="form-row">
+						<input type="text" name="limitrophe" id="limitrophe" class="input-text" placeholder="Limitrophes du champs ?" required>
+					</div>
+				</div>
+				<div class="form-row-last">
+					<input type="submit" name="valider" class="valider" value="Valider">
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>
