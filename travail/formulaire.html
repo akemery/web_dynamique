@@ -17,9 +17,11 @@
 				<h2>Les informations sur votre champ</h2>
 				<div class="form-row-total">
 					<div class="form-row">
+						<label for="sup">Superficie du champ</label>
 						<input type="number" name="sup" id="sup" class="input-text" placeholder="Quelle est la superficie en m² du champ ?">
 					</div>
 					<div class="form-row">
+						<label for="geo">Coordonnées géographiques du champ</label>
 						<select type="text" name="geo" id="geo" class="input-text">
 							<option value="">Coordonnées géographiques ?</option>
 							<option value="B1">B1</option>
@@ -29,10 +31,14 @@
 						</select>
 					</div>
 				</div>
+
+				<div class="form-row-total" id="lat_long"></div>
+
 				<div class="form-row-total">
 					<div class="form-row">
+						<label for="culture">Type de cultures</label>
 						<select type="text" name="culture" id="culture" class="input-text">
-							<option value="">Type de cultures ?</option>
+							<option value="">Quel type de cultures sur le champ ?</option>
 							<option value="cereales">céréales</option>
 							<option value="tubercules">tubercules</option>
 							<option value="legumes">légumes</option>
@@ -42,47 +48,58 @@
 						</select>
 					</div>
 					<div class="form-row">
+						<label for="nom">Nom et prénom(s)</label>
 						<input type="text" name="nom" id="nom" class="input-text" placeholder="Votre nom et prénom (s) ?">
 					</div>
 				</div>
 				<div class="form-row-total">
 					<div class="form-row">
+						<label for="adresse">Adresse</label>
 						<input type="text" name="adresse" id="adresse" class="input-text" placeholder="Quelle est votre adresse ?">
 					</div>
 					<div class="form-row">
-						<input type="text" name="tel" id="tel" class="input-text" placeholder="Quelle est votre numéro de téléphone ?">
+						<label for="tel">Numéro de téléphone</label>
+						<input type="text" name="tel" id="tel" class="input-text" placeholder="Quel est votre numéro de téléphone ?">
 					</div>
 				</div>
 				<div class="form-row-total">
 					<div class="form-row">
-						<input type="email" name="email" id="email" class="input-text" placeholder="Quelle est votre email ?">
+						<label for="email">Email</label>
+						<input type="email" name="email" id="email" class="input-text" placeholder="Quel est votre email ?">
 					</div>
 					<div class="form-row">
+						<label for="type_titre">Type de titre de propriété</label>
 						<input type="text" name="type_titre" id="type_titre" class="input-text" placeholder="Type de titre de propriété ?">
 					</div>
 				</div>
 				<div class="form-row-total">
 					<div class="form-row">
-						<input type="text" name="photo_proprio" id="photo_proprio" class="input-text" placeholder="Photographie du propriétaire ?">
+						<label for="photo_proprio">Photo du propriétaire</label>
+						<input type="file" name="photo_proprio" id="photo_proprio" class="input-text">
 					</div>
 					<div class="form-row">
-						<input type="text" name="photo_parcelle" id="photo_parcelle" class="input-text" placeholder="Photographie aérienne de la parcelle ?">
-					</div>
-				</div>
-				<div class="form-row-total">
-					<div class="form-row">
-						<input type="date" name="date_acquisition" id="date_acquisition" class="input-text" placeholder="Date d'acquisition de la parcelle ?">
-					</div>
-					<div class="form-row">
-						<input type="date" name="dernier_defrichage" id="dernier_defrichage" class="input-text" placeholder="Date de dernière défrichage du champs ?">
+						<label for="photo_parcelle">Photographie aérienne du champ</label>
+						<input type="file" name="photo_parcelle" id="photo_parcelle" class="input-text">
 					</div>
 				</div>
 				<div class="form-row-total">
 					<div class="form-row">
-						<input type="text" name="localite" id="localite" class="input-text" placeholder="Localité du champs ?">
+						<label for="date_acquisition">Date d'acquisition de la parcelle</label>
+						<input type="date" name="date_acquisition" id="date_acquisition" class="input-text">
 					</div>
 					<div class="form-row">
-						<input type="text" name="limitrophe" id="limitrophe" class="input-text" placeholder="Limitrophes du champs ?">
+						<label for="dernier_defrichage">Date du dernier défrichage</label>
+						<input type="date" name="dernier_defrichage" id="dernier_defrichage" class="input-text">
+					</div>
+				</div>
+				<div class="form-row-total">
+					<div class="form-row">
+						<label for="localite">La localité du champ</label>
+						<input type="text" name="localite" id="localite" class="input-text" placeholder="Localité du champ ?">
+					</div>
+					<div class="form-row">
+						<label for="limitrophe">Les limitrophes du champ</label>
+						<input type="text" name="limitrophe" id="limitrophe" class="input-text" placeholder="Limitrophes du champ ?">
 					</div>
 				</div>
 				<div class="form-row-last">
@@ -93,6 +110,13 @@
 	</div>
 </body>
 </html>
+
+<style>
+	label {
+		font-size: large !important;
+	}
+
+</style>
 
 <script>
 	function validate()                                    
@@ -112,6 +136,8 @@
 		var photo_proprio = document.forms["colInfos"]["photo_proprio"];  
 		var photo_parcelle =  document.forms["colInfos"]["photo_parcelle"];  
 
+		var extensions = /(\.jpg|\.jpeg|\.png)$/i; 
+
 		var date_acquisition = document.forms["colInfos"]["date_acquisition"];  
 		var dernier_defrichage = document.forms["colInfos"]["dernier_defrichage"];  
 
@@ -124,92 +150,150 @@
 			sup.focus(); 
 			return false; 
 		} 
+
 		if (geo.selectedIndex < 1)                                  
 		{ 
 			alert("Renseignez les coordonnées géographiques du champ."); 
 			geo.focus(); 
 			return false; 
-		} 
+		} else if (geo.value == 'B1') {
+			$(document).ready(function(){
+				$("#lat_long").html('<div class="form-row">\
+										<label for="lat">Latitude</label>\
+										<input type="text" name="lat" id="lat" class="input-text" placeholder="Quelle est la latitude ?">\
+									</div>\
+									<div class="form-row">\
+										<label for="long">Longitude</label>\
+										<input type="text" name="long" id="long" class="input-text" placeholder="Quelle est la longitude ?">\
+									</div>'
+				);
+			});
+
+			if (lat.value == "")                                  
+			{ 
+				alert("Renseignez la latitude du champ."); 
+				lat.focus(); 
+				return false; 
+			} 
+			if (long.value == "")                                  
+			{ 
+				alert("Renseignez la longitude du champ."); 
+				long.focus(); 
+				return false; 
+			} 
+		}
+
 		if (culture.selectedIndex < 1)                                  
 		{ 
 			alert("Renseignez le type de cultures."); 
 			culture.focus(); 
 			return false; 
 		} 
+
 		if (nom.value == "")                                  
 		{ 
 			alert("Renseignez votre nom et prénom(s)."); 
 			nom.focus(); 
 			return false; 
 		}    
+
 		if (adresse.value == "")                               
 		{ 
 			alert("Renseignez votre adresse."); 
 			adresse.focus(); 
 			return false; 
-		}        
+		}     
+
 		if (tel.value == "")                                   
 		{ 
 			alert("Renseignez votre numéro de téléphone."); 
 			tel.focus(); 
 			return false; 
-		}    
+		}   
+
 		if (email.value.indexOf("@", 0) < 0)                 
 		{ 
 			alert("Renseignez votre adresse email."); 
 			email.focus(); 
 			return false; 
 		}  
+
 		if (type_titre.value == "")                                   
 		{ 
 			alert("Renseignez votre type de titre de propriété."); 
 			type_titre.focus(); 
 			return false; 
 		}  
+
 		if (photo_proprio.value == "")                                   
 		{ 
 			alert("Renseignez une photo de vous."); 
 			photo_proprio.focus(); 
 			return false; 
-		}  
+		} else {
+			if (!extensions.exec(photo_proprio.value))
+			{ 
+				alert('Format de la photo du propriétaire non valide'); 
+				photo_proprio.focus();  
+				return false; 
+			}  
+		}
+
 		if (photo_parcelle.value == "")                                   
 		{ 
 			alert("Renseignez une photographie aérienne de la parcelle."); 
 			photo_parcelle.focus(); 
 			return false; 
-		}  
+		} else {
+			if (!extensions.exec(photo_parcelle.value))
+			{ 
+				alert('Format de la photographie de la parcelle non valide'); 
+				photo_parcelle.focus();  
+				return false; 
+			}  
+		}
+
 		if (date_acquisition.value == "")                                   
 		{ 
 			alert("Renseignez la date d'acquisition de la parcelle."); 
 			date_acquisition.focus(); 
 			return false; 
 		}  
+
 		if (dernier_defrichage.value == "")                                   
 		{ 
 			alert("Renseignez la date du dernier défrichage."); 
 			dernier_defrichage.focus(); 
 			return false; 
-		}    
+		}  
+
+		if (date_acquisition.value > dernier_defrichage.value)                                   
+		{ 
+			alert("la date d'acquisition doit être antérieure à la date du dernier défrichage."); 
+			dernier_defrichage.focus(); 
+			return false; 
+		}   
+
 		if (localite.value == "")                 
 		{ 
 			alert("Renseignez la localité du champ."); 
 			localite.focus(); 
 			return false; 
 		} 
+
 		if (localite.value == "")                 
 		{ 
 			alert("Renseignez la localité du champ."); 
 			localite.focus(); 
 			return false; 
-		}    
+		}   
+
 		if (limitrophe.value == "")                  
 		{ 
 			alert("Renseignez les limitrophes du champ."); 
 			limitrophe.focus(); 
 			return false; 
 		} 
-		return true; 
-
-		
+		return true; 	
 	}
 </script>
