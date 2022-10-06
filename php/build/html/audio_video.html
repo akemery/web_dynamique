@@ -1,0 +1,195 @@
+
+<!DOCTYPE html>
+
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Audio et Vidéo &#8212; Documentation WEB Dynamique 0.0.1</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/translations.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+    <link rel="next" title="Accessibilité" href="accessibility.html" />
+    <link rel="prev" title="GRAPHIQUES" href="graphics.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="audio-et-video">
+<h1>Audio et Vidéo<a class="headerlink" href="#audio-et-video" title="Lien permanent vers ce titre">¶</a></h1>
+<div class="section" id="qu-est-ce-que-l-audio-et-la-video">
+<h2>Qu’est-ce que l’audio et la vidéo ?<a class="headerlink" href="#qu-est-ce-que-l-audio-et-la-video" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Les termes audio et vidéo font généralement référence au format de stockage multimédia basé sur le temps pour les informations sur le son/la musique et les images animées. L’enregistrement numérique audio et vidéo, également appelé codecs audio et vidéo, peut être non compressé, compressé sans perte ou compressé avec perte en fonction de la qualité souhaitée et des cas d’utilisation.</p>
+<p>Les codecs audio peuvent généralement contenir un canal audio (mono), deux canaux audio (stéréo) ou plusieurs canaux (par exemple, surround « 5.1 »). Par exemple, la voix humaine est enregistrée en utilisant un canal tandis que la musique utilise en général deux canaux ou plus. La qualité variera en fonction du débit, c’est-à-dire du nombre de bits utilisés par unité de temps de lecture.</p>
+<p>Les codecs vidéo contiendront une séquence d’images, c’est-à-dire des images fixes et, pour les formats compressés, des mouvements entre ces images. La qualité variera en fonction du nombre d’images par seconde, de l’espace colorimétrique, de la résolution, etc.</p>
+<p>Les formats de stockage multimédia contiendront des flux de codecs audio, des flux de codecs vidéo, des sous-titres et des méta-informations. Il les combine pour fournir l’audio ou la vidéo, avec des matériaux alternatifs ou améliorés. En général, une vidéo aura un flux de codec vidéo, un ou plusieurs flux de codec audio alternatifs, et peut avoir des sous-titres et des méta-informations.</p>
+</div>
+<div class="section" id="a-quoi-servent-l-audio-et-la-video">
+<h2>A quoi servent l’audio et la vidéo ?<a class="headerlink" href="#a-quoi-servent-l-audio-et-la-video" title="Lien permanent vers ce titre">¶</a></h2>
+<p>L’audio et la vidéo sont utilisés pour améliorer l’expérience avec les pages Web (par exemple, l’arrière-plan audio) pour diffuser de la musique, des vidéos familiales, des présentations, etc. ou la langue des signes.</p>
+</div>
+<div class="section" id="qu-est-ce-que-smil">
+<h2>Qu’est-ce que SMIL ?<a class="headerlink" href="#qu-est-ce-que-smil" title="Lien permanent vers ce titre">¶</a></h2>
+<p>SMIL est le langage d’intégration multimédia synchronisé, un langage basé sur XML pour décrire des présentations multimédia interactives. Il combine audio, vidéo, hypertexte, images dans le temps et dans l’espace, permettant des transitions visuelles entre les deux.</p>
+</div>
+<div class="section" id="qu-est-ce-que-le-texte-chronometre">
+<h2>Qu’est-ce que le texte chronométré ?<a class="headerlink" href="#qu-est-ce-que-le-texte-chronometre" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Timed Text est un langage basé sur XML pour les médias de texte chronométré dans le but d’échanger entre les systèmes de création. Il peut également être utilisé directement comme format de diffusion, donc adapté au sous-titrage ou à la description vidéo.</p>
+</div>
+<div class="section" id="que-sont-les-fragments-de-medias">
+<h2>Que sont les fragments de médias ?<a class="headerlink" href="#que-sont-les-fragments-de-medias" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Les fragments de média fournissent un moyen standard indépendant du format de média d’adresser des fragments de média, dans le temps et dans l’espace, sur le Web à l’aide d’identifiants (URL, URI, IRI).</p>
+</div>
+<div class="section" id="que-sont-les-annotations-multimedias">
+<h2>Que sont les annotations multimédias ?<a class="headerlink" href="#que-sont-les-annotations-multimedias" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Les annotations multimédias fournissent des moyens de décrire les ressources multimédias, à l’aide d’un ensemble commun de propriétés. Ces annotations aident à transmettre des informations qui peuvent ensuite être réutilisées dans les moteurs de recherche ou les systèmes de balisage.</p>
+</div>
+<div class="section" id="exemples">
+<h2>Exemples<a class="headerlink" href="#exemples" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Voici quelques exemples de SMIL, SVG et HTML respectivement avec du contenu vidéo :</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">smil</span> <span class="na">xmlns</span><span class="o">=</span><span class="s">&quot;http://www.w3.org/ns/SMIL&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">par</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">video</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;http://www.example.org/MyVideo&quot;</span> <span class="na">fill</span><span class="o">=</span><span class="s">&quot;freeze&quot;</span><span class="p">/&gt;</span>
+            <span class="p">&lt;</span><span class="nt">text</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;http://www.example.org/MyCaption&quot;</span> <span class="na">fill</span><span class="o">=</span><span class="s">&quot;freeze&quot;</span> <span class="p">/&gt;</span>
+       <span class="p">&lt;/</span><span class="nt">par</span><span class="p">&gt;</span>
+   <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">smil</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span> <span class="p">&lt;</span><span class="nt">svg</span> <span class="na">xmlns</span><span class="o">=</span><span class="s">&quot;http://www.w3.org/2000/svg&quot;</span>
+     <span class="na">xmlns:xlink</span><span class="o">=</span><span class="s">&quot;http://www.w3.org/1999/xlink&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">g</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">video</span> <span class="na">xlink:href</span><span class="o">=</span><span class="s">&quot;http://www.example.org/MyVideo&quot;</span>
+           <span class="na">x</span><span class="o">=</span><span class="s">&quot;0&quot;</span> <span class="na">y</span><span class="o">=</span><span class="s">&quot;0&quot;</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;360&quot;</span> <span class="na">height</span><span class="o">=</span><span class="s">&quot;240&quot;</span> <span class="p">/&gt;</span>
+       <span class="p">&lt;/</span><span class="nt">g</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">svg</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;!DOCTYPE html&gt;</span>
+   <span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>My Video<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+     <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+     <span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">video</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;http://www.example.org/MyVideo&quot;</span>
+          <span class="na">width</span><span class="o">=</span><span class="s">&quot;360&quot;</span> <span class="na">height</span><span class="o">=</span><span class="s">&quot;240&quot;</span><span class="p">&gt;</span>
+     <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>Pour plus d’informations consultez <a class="reference external" href="https://developer.mozilla.org/fr/docs/Web/SVG/SVG_animation_with_SMIL">https://developer.mozilla.org/fr/docs/Web/SVG/SVG_animation_with_SMIL</a> et <a class="reference external" href="https://www.w3.org/TR/REC-smil/smil-animation.html">https://www.w3.org/TR/REC-smil/smil-animation.html</a></p>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">WEB Dynamique</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="html_css.html">HTML, XHTML et CSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="javascript.html">JAVASCRIPT WEB APIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="javascript.html#types-de-donnees-interface">Types de données interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="javascript.html#les-interfaces-et-les-objets">Les interfaces et les objets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="javascript.html#interface-essentielles-du-dom">Interface essentielles du DOM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="javascript.html#test-de-l-api-dom">Test de l’API DOM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graphics.html">GRAPHIQUES</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Audio et Vidéo</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#qu-est-ce-que-l-audio-et-la-video">Qu’est-ce que l’audio et la vidéo ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#a-quoi-servent-l-audio-et-la-video">A quoi servent l’audio et la vidéo ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#qu-est-ce-que-smil">Qu’est-ce que SMIL ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#qu-est-ce-que-le-texte-chronometre">Qu’est-ce que le texte chronométré ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#que-sont-les-fragments-de-medias">Que sont les fragments de médias ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#que-sont-les-annotations-multimedias">Que sont les annotations multimédias ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exemples">Exemples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="accessibility.html">Accessibilité</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inter.html">Internationalisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="php.html">PHP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="php.html#syntaxe-de-php">Syntaxe de PHP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ajax.html">PHP - Présentation AJAX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ws.html">Services Web</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wasm.html">WebAssembly ou WASM</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="graphics.html" title="Chapitre précédent">GRAPHIQUES</a></li>
+      <li>Next: <a href="accessibility.html" title="Chapitre suivant">Accessibilité</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Recherche rapide</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Emery Assogba.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.3.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/audio_video.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

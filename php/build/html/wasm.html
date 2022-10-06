@@ -1,0 +1,182 @@
+
+<!DOCTYPE html>
+
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WebAssembly ou WASM &#8212; Documentation WEB Dynamique 0.0.1</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/translations.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+    <link rel="prev" title="Services Web" href="ws.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="webassembly-ou-wasm">
+<h1>WebAssembly ou WASM<a class="headerlink" href="#webassembly-ou-wasm" title="Lien permanent vers ce titre">¶</a></h1>
+<p>WebAssembly est un nouveau type de code qui peut être exécuté dans les navigateurs Web modernes. il s’agit d’un langage de bas niveau de type assembleur avec un format binaire compact qui s’exécute avec des performances quasi natives et fournit des langages tels que C/C++, C# et Rust avec une cible de compilation afin qu’ils puissent s’exécuter sur le Web. Il est également conçu pour fonctionner avec JavaScript, permettant aux deux de fonctionner ensemble.</p>
+<p>WebAssembly a d’énormes implications pour les plate-forme Web. il fournit un moyen d’exécuter du code écrit dans plusieurs langues sur le Web à une vitesse quasi native, avec des applications clientes s’exécutant sur le Web qui n’auraient pas pu le faire auparavant.</p>
+<p>WebAssembly est conçu pour compléter et s’exécuter avec JavaScript — en utilisant les API JavaScript WebAssembly, vous pouvez charger des modules WebAssembly dans une application JavaScript et partager des fonctionnalités entre les deux. Cela vous permet de profiter des performances et de la puissance de WebAssembly ainsi que de l’expressivité et de la flexibilité de JavaScript dans les mêmes applications, même si vous ne savez pas comment écrire du code WebAssembly.</p>
+<div class="section" id="compilation-d-un-nouveau-module-c-c-vers-webassembly">
+<h2>Compilation d’un nouveau module C/C++ vers WebAssembly<a class="headerlink" href="#compilation-d-un-nouveau-module-c-c-vers-webassembly" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Lorsque vous avez écrit un nouveau module de code dans un langage comme C/C++, vous pouvez le compiler dans WebAssembly à l’aide d’un outil comme Emscripten.</p>
+<div class="section" id="configuration-de-l-environnement-emscripten">
+<h3>Configuration de l’environnement Emscripten<a class="headerlink" href="#configuration-de-l-environnement-emscripten" title="Lien permanent vers ce titre">¶</a></h3>
+<p>Tout d’abord, configurons l’environnement de développement requis.</p>
+<p>Obtenez le SDK Emscripten en suivant ces instructions : <a class="reference external" href="https://emscripten.org/docs/getting_started/downloads.html">https://emscripten.org/docs/getting_started/downloads.html</a></p>
+</div>
+<div class="section" id="compiler-un-exemple">
+<h3>Compiler un exemple<a class="headerlink" href="#compiler-un-exemple" title="Lien permanent vers ce titre">¶</a></h3>
+<p>Une fois l’environnement configuré, voyons comment l’utiliser pour compiler un exemple C vers Emscripten. Un certain nombre d’options sont disponibles lors de la compilation avec Emscripten, mais les deux principaux scénarios que nous couvrirons sont :</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Compilation vers wasm et création du code HTML pour exécuter notre code, ainsi que tout le code JavaScript nécessaire pour exécuter le wasm dans l’environnement Web.</p></li>
+<li><p>Compilation en wasm et création du JavaScript.</p></li>
+</ul>
+</div></blockquote>
+<p>Nous examinerons les deux ci-dessous.</p>
+</div>
+<div class="section" id="creation-html-et-javascript">
+<h3>Création HTML et JavaScript<a class="headerlink" href="#creation-html-et-javascript" title="Lien permanent vers ce titre">¶</a></h3>
+<p>C’est le cas le plus simple que nous examinerons, dans lequel vous obtenez emscripten pour générer tout ce dont vous avez besoin pour exécuter votre code, en tant que WebAssembly, dans le navigateur.</p>
+<blockquote>
+<div><p>Nous avons d’abord besoin d’un exemple à compiler. Prenez une copie de l’exemple C simple suivant et enregistrez-le dans un fichier appelé hello.c dans un nouveau répertoire sur votre disque local :</p>
+</div></blockquote>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Hello World</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Maintenant, à l’aide de la fenêtre de terminal que vous avez utilisée pour entrer dans l’environnement du compilateur Emscripten, accédez au même répertoire que votre fichier hello.c et exécutez la commande suivante :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>emcc hello.c -s <span class="nv">WASM</span><span class="o">=</span><span class="m">1</span> -o hello.html
+</pre></div>
+</div>
+<p>Les options que nous avons transmises avec la commande sont les suivantes :</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>-s WASM=1 — Spécifie que nous voulons une sortie wasm. Si nous ne le spécifions pas, Emscripten affichera simplement asm.js, comme il le fait par défaut.</p></li>
+<li><p>-o hello.html — Spécifie que nous voulons qu’Emscripten génère une page HTML pour exécuter notre code (et un nom de fichier à utiliser), ainsi que le module wasm et le code JavaScript « glue » pour compiler et instancier le wasm afin qu’il peut être utilisé dans l’environnement Web.</p></li>
+</ul>
+</div></blockquote>
+<p>À ce stade dans votre répertoire source, vous devriez avoir :</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Le code binaire du module wasm (hello.wasm)</p></li>
+<li><p>Un fichier JavaScript contenant du code de collage à traduire entre les fonctions C natives et JavaScript/wasm (hello.js)</p></li>
+<li><p>Un fichier HTML pour charger, compiler et instancier votre code wasm et afficher sa sortie dans le navigateur (hello.html)</p></li>
+</ul>
+</div></blockquote>
+<p>Exécuter votre exemple</p>
+<p>Il ne vous reste plus qu’à charger le hello.html résultant dans un navigateur prenant en charge WebAssembly.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">WEB Dynamique</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="html_css.html">HTML, XHTML et CSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="javascript.html">JAVASCRIPT WEB APIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="javascript.html#types-de-donnees-interface">Types de données interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="javascript.html#les-interfaces-et-les-objets">Les interfaces et les objets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="javascript.html#interface-essentielles-du-dom">Interface essentielles du DOM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="javascript.html#test-de-l-api-dom">Test de l’API DOM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graphics.html">GRAPHIQUES</a></li>
+<li class="toctree-l1"><a class="reference internal" href="audio_video.html">Audio et Vidéo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accessibility.html">Accessibilité</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inter.html">Internationalisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="php.html">PHP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="php.html#syntaxe-de-php">Syntaxe de PHP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ajax.html">PHP - Présentation AJAX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ws.html">Services Web</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">WebAssembly ou WASM</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#compilation-d-un-nouveau-module-c-c-vers-webassembly">Compilation d’un nouveau module C/C++ vers WebAssembly</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="ws.html" title="Chapitre précédent">Services Web</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Recherche rapide</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Emery Assogba.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.3.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/wasm.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

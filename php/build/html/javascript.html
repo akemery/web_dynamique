@@ -1,0 +1,404 @@
+
+<!DOCTYPE html>
+
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JAVASCRIPT WEB APIS &#8212; Documentation WEB Dynamique 0.0.1</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/translations.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+    <link rel="next" title="GRAPHIQUES" href="graphics.html" />
+    <link rel="prev" title="HTML, XHTML et CSS" href="html_css.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="javascript-web-apis">
+<h1>JAVASCRIPT WEB APIS<a class="headerlink" href="#javascript-web-apis" title="Lien permanent vers ce titre">¶</a></h1>
+<div class="section" id="qu-est-ce-que-le-scripting">
+<h2>Qu’est-ce que le scripting ?<a class="headerlink" href="#qu-est-ce-que-le-scripting" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Un script est un programme qui n’a pas besoin de pré-traitement (par exemple, compilation) avant d’être exécuté. Dans le contexte
+d’un navigateur Web, les scripts font généralement référence au code de programme écrit en JavaScript qui est exécuté par le navigateur lorsqu’une page est téléchargée ou en réponse à un événement déclenché par l’utilisateur.</p>
+<p>Les scripts peuvent rendre les pages Web plus dynamiques. Par exemple, sans recharger une nouvelle version d’une page, il peut autoriser des modifications du contenu de cette page (DHTML (Dynamic HTML)), ou autoriser l’ajout ou l’envoi de contenu à partir de cette page (AJAX (Asynchronous JavaScript and XML)).</p>
+<p>Au-delà, les scripts permettent de plus en plus aux développeurs de créer un pont entre le navigateur et la plate-forme sur laquelle il s’exécute, permettant, par exemple, de créer des pages Web qui intègrent des informations de l’environnement de l’utilisateur, telles que l’emplacement actuel, les détails du carnet d’adresses, etc.</p>
+<p>Cette interactivité supplémentaire fait que les pages Web se comportent comme une application logicielle traditionnelle. Ces pages Web sont souvent appelées applications Web et peuvent être mises à disposition soit directement dans le navigateur sous forme de page Web, soit empaquetées et distribuées sous forme de widgets.</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span> <span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+
+     <span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/javascript&quot;</span><span class="p">&gt;</span>
+        <span class="kd">function</span> <span class="nx">mymessage</span><span class="p">()</span> <span class="p">{</span>
+          <span class="nx">alert</span><span class="p">(</span><span class="s2">&quot;This message was triggered from the onload event&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+
+ <span class="p">&lt;</span><span class="nt">body</span> <span class="na">onload</span><span class="o">=</span><span class="s">&quot;mymessage()&quot;</span><span class="p">&gt;</span>
+ <span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span> <span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/javascript&quot;</span><span class="p">&gt;</span>
+    <span class="nx">cc</span><span class="o">=</span><span class="mf">0</span><span class="p">;</span>
+    <span class="kd">function</span> <span class="nx">changeimage</span><span class="p">()</span>
+    <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">cc</span><span class="o">==</span><span class="mf">0</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="nx">cc</span><span class="o">=</span><span class="mf">1</span><span class="p">;</span>
+       <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;myimage&#39;</span><span class="p">).</span><span class="nx">src</span><span class="o">=</span><span class="s2">&quot;bulbon.gif&quot;</span><span class="p">;</span>
+      <span class="p">}</span>
+     <span class="k">else</span>
+     <span class="p">{</span>
+       <span class="nx">cc</span><span class="o">=</span><span class="mf">0</span><span class="p">;</span>
+       <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;myimage&#39;</span><span class="p">).</span><span class="nx">src</span><span class="o">=</span><span class="s2">&quot;bulboff.gif&quot;</span><span class="p">;</span>
+     <span class="p">}</span>
+  <span class="p">}</span>
+ <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">img</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;myimage&quot;</span> <span class="na">onclick</span><span class="o">=</span><span class="s">&quot;changeimage()&quot;</span>
+  <span class="na">border</span><span class="o">=</span><span class="s">&quot;0&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;bulboff.gif&quot;</span>
+  <span class="na">width</span><span class="o">=</span><span class="s">&quot;100&quot;</span> <span class="na">height</span><span class="o">=</span><span class="s">&quot;180&quot;</span> <span class="p">/&gt;</span>
+ <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Click to turn on/off the light<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="quelles-interfaces-de-script-sont-disponibles">
+<h2>Quelles interfaces de script sont disponibles ?<a class="headerlink" href="#quelles-interfaces-de-script-sont-disponibles" title="Lien permanent vers ce titre">¶</a></h2>
+<p>L’interface de script la plus basique développée au W3C est le DOM, le Document Object Model qui permet aux programmes et aux scripts d’accéder et de mettre à jour dynamiquement le contenu, la structure et le style des documents. Les spécifications DOM forment le cœur du DHTML.</p>
+<p>Les modifications du contenu à l’aide du DOM par l’utilisateur et par des scripts déclenchent des événements que les développeurs peuvent utiliser pour créer des interfaces utilisateur riches.</p>
+<p>Un certain nombre d’interfaces plus avancées sont en cours de standardisation, par exemple :</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>XMLHttpRequest permet de charger du contenu supplémentaire à partir du Web sans charger un nouveau document, un composant central d’AJAX,</p></li>
+<li><p>l’API de géolocalisation rend l’emplacement actuel de l’utilisateur disponible pour les applications basées sur un navigateur,</p></li>
+<li><p>plusieurs API rendent transparente l’intégration des applications Web avec le système de fichiers local et le stockage.</p></li>
+</ul>
+</div></blockquote>
+<p>WAI ARIA propose des mécanismes pour garantir que cette interactivité supplémentaire reste utilisable indépendamment des appareils et des handicaps. Des considérations supplémentaires s’appliquent au développement d’applications Web pour appareils mobiles.</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/javascript&quot;</span><span class="p">&gt;</span>
+       <span class="kd">function</span> <span class="nx">moveover</span><span class="p">()</span>
+       <span class="p">{</span>
+          <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;image&#39;</span><span class="p">).</span><span class="nx">src</span><span class="o">=</span><span class="s2">&quot;bulbon.gif&quot;</span><span class="p">;</span>
+       <span class="p">}</span>
+       <span class="kd">function</span> <span class="nx">moveback</span><span class="p">()</span>
+       <span class="p">{</span>
+          <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">&#39;image&#39;</span><span class="p">).</span><span class="nx">src</span><span class="o">=</span><span class="s2">&quot;bulboff.gif&quot;</span><span class="p">;</span>
+       <span class="p">}</span>
+   <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+
+ <span class="p">&lt;</span><span class="nt">b</span><span class="p">&gt;</span>Mouse over the image<span class="p">&lt;/</span><span class="nt">b</span><span class="p">&gt;&lt;</span><span class="nt">br</span> <span class="p">/&gt;</span>
+ <span class="p">&lt;</span><span class="nt">img</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;image&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;bulboff.gif&quot;</span>
+ <span class="na">onmouseover</span><span class="o">=</span><span class="s">&quot;moveover()&quot;</span>
+ <span class="na">onmouseout</span><span class="o">=</span><span class="s">&quot;moveback()&quot;</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;100&quot;</span> <span class="na">height</span><span class="o">=</span><span class="s">&quot;180&quot;</span> <span class="p">/&gt;</span>
+
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="reference-du-dom">
+<h2>Référence du DOM<a class="headerlink" href="#reference-du-dom" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Le Document Object Model ou DOM (pour modèle objet de document) est une interface de programmation pour les documents HTML, XML et SVG. Il fournit une représentation structurée du document sous forme d’un arbre et définit la façon dont la structure peut être manipulée par les programmes, en termes de style et de contenu. Le DOM représente le document comme un ensemble de nœuds et d’objets possédant des propriétés et des méthodes. Les nœuds peuvent également avoir des gestionnaires d’événements qui se déclenchent lorsqu’un événement se produit. Cela permet de manipuler des pages web grâce à des scripts et/ou des langages de programmation. Les nœuds peuvent être associés à des gestionnaires d’événements. Une fois qu’un événement est déclenché, les gestionnaires d’événements sont exécutés.</p>
+<p>Une page Web est un document. Celui-ci peut être affiché soit dans la fenêtre du navigateur, soit sous la forme de son code source HTML. Mais il s’agit du même document dans les deux cas. Le modèle objet de document proposé par le DOM fournit une autre manière de représenter, stocker et manipuler ce même document. Le DOM est une représentation entièrement orientée objet de la page Web, et peut être manipulé à l’aide d’un langage de script comme JavaScript.</p>
+<p>Les normes DOM du W3C et WHATWG DOM forment la base du DOM implémenté dans la plupart des navigateurs modernes. Beaucoup d’entre-eux fournissent des extensions allant plus loin que le standard, faites donc attention lorsque vous les utilisez sur le Web, où les documents peuvent être consultés par de nombreux navigateurs avec chacun un DOM différent.</p>
+<p>Par exemple, DOM du W3C spécifie que la méthode getElementsByTagName dans le code ci-dessous doit renvoyer une liste de tous les éléments &lt;P&gt; présents dans le document :</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>const paragraphs = document.querySelectorAll(&quot;p&quot;);
+// paragraphes[0] est le premier élément <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+// paragraphes[1] est le second élément <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>, etc.
+alert(paragraphes[0].nodeName);
+</pre></div>
+</div>
+<p>Chacune des propriétés et des méthodes et chacun des évènements disponibles permettant la manipulation et la création de pages Web sont organisés dans des objets (par exemple, l’objet document qui représente le document lui-même, l’objet table qui implémente l’interface DOM particulière HTMLTableElement permettant d’accéder aux tables HTML, etc.).</p>
+</div>
+<div class="section" id="dom-et-javascript">
+<h2>DOM et Javascript<a class="headerlink" href="#dom-et-javascript" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Le DOM n’est pas un langage de programmation, mais sans lui le langage JavaScript n’aurait aucun modèle ni aucune notion des pages Web, des documents XML, et des éléments pour lesquels il est généralement utilisé. Chaque élément d’un document, que ce soit le document lui-même, ses en-têtes, les tableaux internes au document, les en-têtes de colonnes et le texte contenu dans les cellules de ces tableaux, fait partie du modèle objet de document (DOM) de ce document. Tous ces éléments sont donc accessibles et peuvent être manipulés à l’aide du DOM et d’un langage de script comme JavaScript.</p>
+<p>À l’origine, JavaScript et le DOM étaient fortement liés, mais ils ont fini par évoluer en deux entités distinctes. Le contenu de la page est stocké dans le DOM et on peut y accéder et le manipuler via JavaScript, de la sorte qu’on pourrait écrire cette équation approximative :</p>
+<p>Le DOM a été conçu pour être indépendant de tout langage de programmation, ce qui rend la représentation structurelle du document disponible à l’aide d’une API simple et cohérente. Bien que cette documentation de référence se concentre uniquement sur JavaScript, des implémentations du DOM peuvent être construites pour n’importe quel langage, comme le démontre cet exemple en Python :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Exemple d&#39;utilisation du DOM en Python</span>
+<span class="kn">import</span> <span class="nn">xml.dom.minidom</span> <span class="k">as</span> <span class="nn">m</span>
+<span class="n">doc</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="s2">&quot;C:</span><span class="se">\\</span><span class="s2">Projects</span><span class="se">\\</span><span class="s2">Py</span><span class="se">\\</span><span class="s2">chap1.xml&quot;</span><span class="p">);</span>
+<span class="n">doc</span><span class="o">.</span><span class="n">nodeName</span> <span class="c1"># Propriété DOM de l&#39;objet document;</span>
+<span class="n">p_list</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">getElementsByTagName</span><span class="p">(</span><span class="s2">&quot;para&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="methodes-d-acces-au-dom">
+<h2>Méthodes d’accès au DOM<a class="headerlink" href="#methodes-d-acces-au-dom" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Il n’y a rien de particulier à faire pour commencer à utiliser le DOM. Les différents navigateurs ont différentes implémentations du DOM, et celles-ci présentent des degrés divers de conformité au standard DOM de référence (un sujet que l’on tente d’éviter dans cette documentation), mais chacun d’entre eux utilise un modèle objet de document pour rendre les pages Web accessibles aux scripts.</p>
+<p>Lorsque vous créez un script, qu’il figure au sein de la page dans un élément &lt;SCRIPT&gt; ou soit inclus au moyen d’une instruction de chargement de script, vous pouvez immédiatement commencer à utiliser l’API. En accédant aux éléments document ou window, vous pouvez manipuler le document lui-même ou parcourir les enfants de ces éléments, qui sont les divers éléments de la page Web. Votre programmation DOM peut être très simple, comme l’exemple suivant qui affiche un message d’avertissement à l’aide de la fonction alert() de l’objet window, ou peut utiliser des méthodes DOM plus sophistiquées pour créer du nouveau contenu comme dans l’exemple plus bas.</p>
+<p>Le code JavaScript suivant affichera une alerte quand le document est chargé (et quand le DOM entier est disponible à l’utilisation).</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">body</span> <span class="na">onload</span><span class="o">=</span><span class="s">&quot;window.alert(&#39;Bienvenue sur ma page Web !&#39;);&quot;</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>Un autre exemple. Cette fonction crée un nouvel élément H1, y ajoute du texte, et ajoute ensuite cet élément à l’arbre du document :</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+ <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="c1">// run this function when the document is loaded</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+
+      <span class="c1">// create a couple of elements in an otherwise empty HTML page</span>
+      <span class="kd">const</span> <span class="nx">heading</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">&quot;h1&quot;</span><span class="p">);</span>
+      <span class="kd">const</span> <span class="nx">heading_text</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createTextNode</span><span class="p">(</span><span class="s2">&quot;Gros titre !&quot;</span><span class="p">);</span>
+      <span class="nx">heading</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">heading_text</span><span class="p">);</span>
+      <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">heading</span><span class="p">);</span>
+   <span class="p">}</span>
+ <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="types-de-donnees-fondamentaux">
+<h2>Types de données fondamentaux<a class="headerlink" href="#types-de-donnees-fondamentaux" title="Lien permanent vers ce titre">¶</a></h2>
+</div>
+</div>
+<div class="section" id="types-de-donnees-interface">
+<h1>Types de données interface<a class="headerlink" href="#types-de-donnees-interface" title="Lien permanent vers ce titre">¶</a></h1>
+<p>Lorsqu’un membre renvoie un objet de type document (par exemple la propriété ownerDocument d’un élément, qui retourne le document auquel il appartient), cet objet est l’objet document racine lui-même. Le chapitre référence de DOM document décrit l’objet document en détail.</p>
+<p>Chaque objet du document est sous une forme ou une autre un noeud. Dans un document HTML, un objet peût être un élément nœud, mais aussi un nœud text ou nœud attribut.</p>
+<p>Le type élément est basé sur le nœud. Il se réfère à un élément ou nœud de type élément renvoyé par un membre de l’API DOM. Plutôt que de dire, par exemple que la méthode document.createElement() renvoie une réference à un objet de type nœud, nous dirons simplement que cette méthode renvoie l’élément qui vient juste d’être créer dans le DOM. Les objets element implémentent l’interface DOM element, mais aussi l’interface plus basique node, qui sont toutes les deux incluses dans cette réference. dans un document HTML, les éléments sont mis en valeur par l’interface API HTML DOM HTMLElement aussi bien que par d’autres interfaces décrivant les capacités d’éléments spécifiques ( par exemple , HTMLTableElement for &lt;table&gt; elements).</p>
+<p>Une nodeList est un tableau d’éléments, comme celui qui est renvoyé par la méthode document.getElementsByTagName(). Les éléments d’une nodeList sont accessibles par un index de deux manières différentes :</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>list.item(1)</p></li>
+<li><p>list[1]</p></li>
+</ul>
+</div></blockquote>
+<p>Ces deux lignes sont équivalentes. Dans la première, item() est la méthode de l’objet nodeList. La seconde utilise la syntaxe habituelle d’un tableau pour accéder au second élément de la liste.</p>
+<p>Lorsqu’un attribute est renvoyé par un membre (par exemple par la méthode createAttribute()), il s’agit d’une référence à un objet qui expose une interface particulière (et limitée) aux attributs. Les attributs sont des nœuds dans le DOM tout comme les éléments, mais ils seront rarement utilisés de cette manière.</p>
+<p>Une namedNodeMap est comme un tableau, mais où l’on peut accéder aux éléments à la fois par nom ou par index. Cette dernière possibilité est cependant juste là pour faciliter l’énumération, car la liste n’est pas dans un ordre particulier. Une namedNodeMap a une méthode item() pour la même raison, et il est également possible d’ajouter et de retirer des élements d’une namedNodeMap.</p>
+<div class="section" id="les-interfaces-dom">
+<h2>Les Interfaces DOM<a class="headerlink" href="#les-interfaces-dom" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Un des objectifs de ce cours est de ne pas trop parler de l’héritage abstrait d’interfaces, et d’autres détails d’implémentation, et de se concentrer plutôt sur les objets dans le DOM qui sont leschoses réelles utilisables pour manipuler la hiérarchie du DOM. Du point de vue du programmeur Web, il est rarement utile de savoir que l’objet représentant l’élément HTML FORM reçoit sa propriété name de l’interface HTMLElement. Dans les deux cas, la propriété désirée est simplement l’objet de formulaire.</p>
+<p>Cependant, la relation entre les objets et les interfaces qu’ils implémentent dans le DOM peut entrainer une certaine confusion, c’est pourquoi cette section tente de présenter un tant soit peu les interfaces figurant dans la spécification du DOM et la manière dont elles sont rendues disponibles.</p>
+</div>
+</div>
+<div class="section" id="les-interfaces-et-les-objets">
+<h1>Les interfaces et les objets<a class="headerlink" href="#les-interfaces-et-les-objets" title="Lien permanent vers ce titre">¶</a></h1>
+<p>De nombreux objets empruntent à plusieurs interfaces différentes. L’objet table par exemple implémente une interface spécialisée de l’élément HTML Table, qui comprend des méthodes telles que createCaption et insertRow. Mais comme il s’agit également d’un élément HTML, table implémente aussi l’interface Element décrite dans le chapitre Référence de DOM element. Enfin, comme un élément HTML est, du point de vue du DOM, un nœud au sein de l’arbre de nœuds qui forment le modèle objet pour une page HTML ou XML, l’objet table implémente aussi l’interface plus basique Node, dont dérive Element.</p>
+<p>Lorsque vous obtiendrez une référence à un objet table, comme dans l’exemple suivant, vous utiliserez régulièrement ces trois interfaces de manière interchangeable sur l’objet, peut-être même sans le savoir.</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>var table = document.getElementById(&quot;table&quot;);
+var tableAttrs = table.attributes; // Interface Node/Element
+for(var i = 0; i &lt; tableAttrs.length; i++){
+  // Interface HTMLTableElement : attribut border
+  if(tableAttrs[i].nodeName.toLowerCase() == &quot;border&quot;)
+   table.border = &quot;1&quot;;
+}
+// Interface HTMLTableElement : attribut summary
+table.summary = &quot;note : bordure plus large&quot;;
+</pre></div>
+</div>
+</div>
+<div class="section" id="interface-essentielles-du-dom">
+<h1>Interface essentielles du DOM<a class="headerlink" href="#interface-essentielles-du-dom" title="Lien permanent vers ce titre">¶</a></h1>
+<p>Cette section liste certaines des interfaces les plus couramment utilisées dans le DOM. L’idée n’est pas ici de décrire ce que font ces API, mais de vous donner une idée des sortes de méthodes et propriétés que vous verrez très souvent en utilisant le DOM.</p>
+<p>Les objets document et window sont ceux dont les interfaces sont les plus souvent utilisées dans la programmation DOM. En termes simples, l’objet window représente quelque chose comme le navigateur, et l’objet document est la racine du document lui-même. Element hérite de l’interface générique Node, et ensemble ces deux interfaces fournissent un grand nombre des méthodes et propriétés utilisables sur des éléments individuels. Ces éléments peuvent également avoir des interfaces spécifiques pour traiter le type de données que ces éléments contiennent, comme dans l’objet table donné en exemple dans la section précédente.</p>
+<p>Ce qui suit est une brève liste des API communes au script de page dans le Web et XML utilisant le DOM.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>document.getElementById(id)</p></li>
+<li><p>document.getElementsByTagName(name)</p></li>
+<li><p>document.createElement(name)</p></li>
+<li><p>parentNode.appendChild(node)</p></li>
+<li><p>element.innerHTML</p></li>
+<li><p>element.style.left</p></li>
+<li><p>element.setAttribute()</p></li>
+<li><p>element.getAttribute()</p></li>
+<li><p>element.addEventListener()</p></li>
+<li><p>window.content</p></li>
+<li><p>window.onload (en-US)</p></li>
+<li><p>console.log()</p></li>
+<li><p>window.scrollTo()</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="test-de-l-api-dom">
+<h1>Test de l’API DOM<a class="headerlink" href="#test-de-l-api-dom" title="Lien permanent vers ce titre">¶</a></h1>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>&lt;html&gt;
+ &lt;head&gt;
+   &lt;title&gt;Tests du DOM&lt;/title&gt;
+  &lt;script type=&quot;application/x-javascript&quot;&gt;
+   function setBodyAttr(attr,value){
+   if(document.body) eval(&#39;document.body.&#39;+attr+&#39;=&quot;&#39;+value+&#39;&quot;&#39;);
+      else notSupported();
+   }
+  &lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div style=&quot;margin: .5in; height=&quot;400&quot;&quot;&gt;
+       &lt;p&gt;&lt;b&gt;&lt;tt&gt;text&lt;/tt&gt; color&lt;/p&gt;
+       &lt;form&gt;
+       &lt;select onChange=&quot;setBodyAttr(&#39;text&#39;,
+          this.options[this.selectedIndex].value);&quot;&gt;
+            &lt;option value=&quot;black&quot;&gt;black
+            &lt;option value=&quot;darkblue&quot;&gt;darkblue
+       &lt;/select&gt;
+          &lt;p&gt;&lt;b&gt;&lt;tt&gt;bgColor&lt;/tt&gt;&lt;/p&gt;
+          &lt;select onChange=&quot;setBodyAttr(&#39;bgColor&#39;,
+             this.options[this.selectedIndex].value);&quot;&gt;
+     &lt;option value=&quot;white&quot;&gt;white
+     &lt;option value=&quot;lightgrey&quot;&gt;gray
+   &lt;/select&gt;
+   &lt;p&gt;&lt;b&gt;&lt;tt&gt;link&lt;/tt&gt;&lt;/p&gt;
+   &lt;select onChange=&quot;setBodyAttr(&#39;link&#39;,
+       this.options[this.selectedIndex].value);&quot;&gt;
+     &lt;option value=&quot;blue&quot;&gt;blue
+     &lt;option value=&quot;green&quot;&gt;green
+   &lt;/select&gt;  &lt;small&gt;
+       &lt;a href=&quot;http://www.brownhen.com/dom_api_top.html&quot; id=&quot;sample&quot;&gt;
+   (exemple de lien)&lt;/a&gt;&lt;/small&gt;&lt;br&gt;
+ &lt;/form&gt;
+ &lt;form&gt;
+   &lt;input type=&quot;button&quot; value=&quot;version&quot; onclick=&quot;ver()&quot; /&gt;
+ &lt;/form&gt;
+ &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre></div>
+</div>
+<p><a class="reference external" href="https://developer.mozilla.org/fr/docs/Web/API/Document_Object_Model/Introduction">https://developer.mozilla.org/fr/docs/Web/API/Document_Object_Model/Introduction</a></p>
+<div class="section" id="au-dela-des-scripts">
+<h2>Au-delà des scripts<a class="headerlink" href="#au-dela-des-scripts" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Alors que les scripts offrent une excellente opportunité de développer de nouvelles interfaces et d’expérimenter de nouvelles
+interactions avec les utilisateurs, au fil du temps, un certain nombre de ces ajouts bénéficient d’une approche plus
+déclarative ; par exemple, au lieu que chaque développeur réimplémente une interface de calendrier qui permet à un utilisateur
+de choisir une date, définir un type d’entrée (&lt;input type=”date” /&gt;) qui le fait automatiquement permet de gagner beaucoup de
+temps et les bugs, et crée un terrain pour de nouvelles innovations.</p>
+<p>Au-delà de l’ensemble des interfaces déclaratives mises à disposition via HTML, plusieurs technologies ont été développées pour
+rendre possibles ces applications Web déclaratives.</p>
+<p>Pour plus d’information visitez les liens suivants: <a class="reference external" href="https://developer.mozilla.org/fr/docs/Learn/Getting_started_with_the_web/JavaScript_basics">https://developer.mozilla.org/fr/docs/Learn/Getting_started_with_the_web/JavaScript_basics</a> , <a class="reference external" href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Introduction">https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Introduction</a> ,  <a class="reference external" href="https://developer.mozilla.org/fr/docs/Learn/Tools_and_testing/Client-side_JavaScript_frameworks">https://developer.mozilla.org/fr/docs/Learn/Tools_and_testing/Client-side_JavaScript_frameworks</a> et <a class="reference external" href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Inheritance_and_the_prototype_chain">https://developer.mozilla.org/fr/docs/Web/JavaScript/Inheritance_and_the_prototype_chain</a></p>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">WEB Dynamique</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="html_css.html">HTML, XHTML et CSS</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">JAVASCRIPT WEB APIS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#qu-est-ce-que-le-scripting">Qu’est-ce que le scripting ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#quelles-interfaces-de-script-sont-disponibles">Quelles interfaces de script sont disponibles ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reference-du-dom">Référence du DOM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dom-et-javascript">DOM et Javascript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#methodes-d-acces-au-dom">Méthodes d’accès au DOM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#types-de-donnees-fondamentaux">Types de données fondamentaux</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#types-de-donnees-interface">Types de données interface</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#les-interfaces-dom">Les Interfaces DOM</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#les-interfaces-et-les-objets">Les interfaces et les objets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#interface-essentielles-du-dom">Interface essentielles du DOM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#test-de-l-api-dom">Test de l’API DOM</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#au-dela-des-scripts">Au-delà des scripts</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="graphics.html">GRAPHIQUES</a></li>
+<li class="toctree-l1"><a class="reference internal" href="audio_video.html">Audio et Vidéo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accessibility.html">Accessibilité</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inter.html">Internationalisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="php.html">PHP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="php.html#syntaxe-de-php">Syntaxe de PHP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ajax.html">PHP - Présentation AJAX</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ws.html">Services Web</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wasm.html">WebAssembly ou WASM</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="html_css.html" title="Chapitre précédent">HTML, XHTML et CSS</a></li>
+      <li>Next: <a href="graphics.html" title="Chapitre suivant">GRAPHIQUES</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Recherche rapide</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Emery Assogba.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.3.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/javascript.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

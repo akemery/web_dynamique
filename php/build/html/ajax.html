@@ -1,0 +1,382 @@
+
+<!DOCTYPE html>
+
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PHP - Présentation AJAX &#8212; Documentation WEB Dynamique 0.0.1</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/translations.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+    <link rel="next" title="Services Web" href="ws.html" />
+    <link rel="prev" title="PHP" href="php.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="php-presentation-ajax">
+<h1>PHP - Présentation AJAX<a class="headerlink" href="#php-presentation-ajax" title="Lien permanent vers ce titre">¶</a></h1>
+<div class="section" id="qu-est-ce-qu-ajax">
+<h2>Qu’est-ce qu’AJAX ?<a class="headerlink" href="#qu-est-ce-qu-ajax" title="Lien permanent vers ce titre">¶</a></h2>
+<p>AJAX = JavaScript et XML asynchrones.</p>
+<p>AJAX est une technique de création de pages Web rapides et dynamiques.</p>
+<p>AJAX permet aux pages Web d’être mises à jour de manière asynchrone en échangeant de petites quantités de données avec le serveur dans les coulisses. Cela signifie qu’il est possible de mettre à jour des parties d’une page Web, sans recharger la page entière.</p>
+<p>Les pages Web classiques (qui n’utilisent pas AJAX) doivent recharger la page entière si le contenu devait changer.</p>
+<p>Exemples d’applications utilisant AJAX : onglets Google Maps, Gmail, Youtube et Facebook.</p>
+</div>
+<div class="section" id="ajax-est-base-sur-les-normes-internet">
+<h2>AJAX est basé sur les normes Internet<a class="headerlink" href="#ajax-est-base-sur-les-normes-internet" title="Lien permanent vers ce titre">¶</a></h2>
+<p>AJAX est basé sur les normes Internet et utilise une combinaison de :</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Objet XMLHttpRequest (pour échanger des données de manière asynchrone avec un serveur)</p></li>
+<li><p>JavaScript/DOM (pour afficher/interagir avec les informations)</p></li>
+<li><p>CSS (pour styliser les données)</p></li>
+<li><p>XML (souvent utilisé comme format de transfert de données)</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="ajax-et-php">
+<h2>AJAX et PHP<a class="headerlink" href="#ajax-et-php" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Exemple</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+   <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+      <span class="kd">function</span> <span class="nx">showHint</span><span class="p">(</span><span class="nx">str</span><span class="p">)</span> <span class="p">{</span>
+         <span class="k">if</span> <span class="p">(</span><span class="nx">str</span><span class="p">.</span><span class="nx">length</span> <span class="o">==</span> <span class="mf">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;txtHint&quot;</span><span class="p">).</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
+            <span class="k">return</span><span class="p">;</span>
+         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="kd">var</span> <span class="nx">xmlhttp</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
+            <span class="nx">xmlhttp</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">==</span> <span class="mf">4</span> <span class="o">&amp;&amp;</span> <span class="k">this</span><span class="p">.</span><span class="nx">status</span> <span class="o">==</span> <span class="mf">200</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">&quot;txtHint&quot;</span><span class="p">).</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">responseText</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="p">};</span>
+            <span class="nx">xmlhttp</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span> <span class="s2">&quot;gethint.php?q=&quot;</span> <span class="o">+</span> <span class="nx">str</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+        <span class="nx">xmlhttp</span><span class="p">.</span><span class="nx">send</span><span class="p">();</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+ <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+
+ <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">b</span><span class="p">&gt;</span>Start typing a name in the input field below:<span class="p">&lt;/</span><span class="nt">b</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+ <span class="p">&lt;</span><span class="nt">form</span> <span class="na">action</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">&gt;</span>
+ <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&quot;fname&quot;</span><span class="p">&gt;</span>First name:<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+ <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;fname&quot;</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;fname&quot;</span> <span class="na">onkeyup</span><span class="o">=</span><span class="s">&quot;showHint(this.value)&quot;</span><span class="p">&gt;</span>
+ <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+ <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Suggestions: <span class="p">&lt;</span><span class="nt">span</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;txtHint&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<div class="section" id="explication-du-code">
+<h3>Explication du code :<a class="headerlink" href="#explication-du-code" title="Lien permanent vers ce titre">¶</a></h3>
+<p>Tout d’abord, vérifiez si le champ de saisie est vide (str.length == 0). Si c’est le cas, effacez le contenu de l’espace réservé txtHint et quittez la fonction.</p>
+<p>Cependant, si le champ de saisie n’est pas vide, procédez comme suit :</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Créer un objet XMLHttpRequest</p></li>
+<li><p>Créer la fonction à exécuter lorsque la réponse du serveur est prête</p></li>
+<li><p>Envoyez la demande à un fichier PHP (gethint.php) sur le serveur</p></li>
+<li><p>Notez que le paramètre q est ajouté à l’url (gethint.php?q= »+str)</p></li>
+<li><p>Et la variable str contient le contenu du champ de saisie</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="le-fichier-php-gethint-php">
+<h3>Le fichier PHP - « gethint.php »<a class="headerlink" href="#le-fichier-php-gethint-php" title="Lien permanent vers ce titre">¶</a></h3>
+<p>Le fichier PHP vérifie un tableau de noms et renvoie le(s) nom(s) correspondant(s) au navigateur :</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+   <span class="c1">// Array with names</span>
+   <span class="nv">$a</span><span class="p">[]</span> <span class="o">=</span> <span class="s2">&quot;Anna&quot;</span><span class="p">;</span>
+   <span class="nv">$a</span><span class="p">[]</span> <span class="o">=</span> <span class="s2">&quot;Brittany&quot;</span><span class="p">;</span>
+   <span class="nv">$a</span><span class="p">[]</span> <span class="o">=</span> <span class="s2">&quot;Cinderella&quot;</span><span class="p">;</span>
+   <span class="nv">$a</span><span class="p">[]</span> <span class="o">=</span> <span class="s2">&quot;Diana&quot;</span><span class="p">;</span>
+   <span class="nv">$a</span><span class="p">[]</span> <span class="o">=</span> <span class="s2">&quot;Eva&quot;</span><span class="p">;</span>
+   <span class="nv">$a</span><span class="p">[]</span> <span class="o">=</span> <span class="s2">&quot;Fiona&quot;</span><span class="p">;</span>
+   <span class="nv">$a</span><span class="p">[]</span> <span class="o">=</span> <span class="s2">&quot;Gunda&quot;</span><span class="p">;</span>
+   <span class="nv">$a</span><span class="p">[]</span> <span class="o">=</span> <span class="s2">&quot;Hege&quot;</span><span class="p">;</span>
+   <span class="nv">$a</span><span class="p">[]</span> <span class="o">=</span> <span class="s2">&quot;Inga&quot;</span><span class="p">;</span>
+   <span class="nv">$a</span><span class="p">[]</span> <span class="o">=</span> <span class="s2">&quot;Johanna&quot;</span><span class="p">;</span>
+   <span class="nv">$a</span><span class="p">[]</span> <span class="o">=</span> <span class="s2">&quot;Kitty&quot;</span><span class="p">;</span>
+   <span class="nv">$a</span><span class="p">[]</span> <span class="o">=</span> <span class="s2">&quot;Linda&quot;</span><span class="p">;</span>
+   <span class="nv">$a</span><span class="p">[]</span> <span class="o">=</span> <span class="s2">&quot;Nina&quot;</span><span class="p">;</span>
+   <span class="nv">$a</span><span class="p">[]</span> <span class="o">=</span> <span class="s2">&quot;Ophelia&quot;</span><span class="p">;</span>
+   <span class="nv">$a</span><span class="p">[]</span> <span class="o">=</span> <span class="s2">&quot;Petunia&quot;</span><span class="p">;</span>
+   <span class="nv">$a</span><span class="p">[]</span> <span class="o">=</span> <span class="s2">&quot;Amanda&quot;</span><span class="p">;</span>
+   <span class="nv">$a</span><span class="p">[]</span> <span class="o">=</span> <span class="s2">&quot;Raquel&quot;</span><span class="p">;</span>
+   <span class="nv">$a</span><span class="p">[]</span> <span class="o">=</span> <span class="s2">&quot;Cindy&quot;</span><span class="p">;</span>
+   <span class="nv">$a</span><span class="p">[]</span> <span class="o">=</span> <span class="s2">&quot;Doris&quot;</span><span class="p">;</span>
+   <span class="nv">$a</span><span class="p">[]</span> <span class="o">=</span> <span class="s2">&quot;Eve&quot;</span><span class="p">;</span>
+   <span class="nv">$a</span><span class="p">[]</span> <span class="o">=</span> <span class="s2">&quot;Evita&quot;</span><span class="p">;</span>
+   <span class="nv">$a</span><span class="p">[]</span> <span class="o">=</span> <span class="s2">&quot;Sunniva&quot;</span><span class="p">;</span>
+   <span class="nv">$a</span><span class="p">[]</span> <span class="o">=</span> <span class="s2">&quot;Tove&quot;</span><span class="p">;</span>
+   <span class="nv">$a</span><span class="p">[]</span> <span class="o">=</span> <span class="s2">&quot;Unni&quot;</span><span class="p">;</span>
+   <span class="nv">$a</span><span class="p">[]</span> <span class="o">=</span> <span class="s2">&quot;Violet&quot;</span><span class="p">;</span>
+   <span class="nv">$a</span><span class="p">[]</span> <span class="o">=</span> <span class="s2">&quot;Liza&quot;</span><span class="p">;</span>
+   <span class="nv">$a</span><span class="p">[]</span> <span class="o">=</span> <span class="s2">&quot;Elizabeth&quot;</span><span class="p">;</span>
+   <span class="nv">$a</span><span class="p">[]</span> <span class="o">=</span> <span class="s2">&quot;Ellen&quot;</span><span class="p">;</span>
+   <span class="nv">$a</span><span class="p">[]</span> <span class="o">=</span> <span class="s2">&quot;Wenche&quot;</span><span class="p">;</span>
+   <span class="nv">$a</span><span class="p">[]</span> <span class="o">=</span> <span class="s2">&quot;Vicky&quot;</span><span class="p">;</span>
+
+   <span class="c1">// get the q parameter from URL</span>
+   <span class="nv">$q</span> <span class="o">=</span> <span class="nv">$_REQUEST</span><span class="p">[</span><span class="s2">&quot;q&quot;</span><span class="p">];</span>
+
+   <span class="nv">$hint</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
+
+   <span class="c1">// lookup all hints from array if $q is different from &quot;&quot;</span>
+   <span class="k">if</span> <span class="p">(</span><span class="nv">$q</span> <span class="o">!==</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nv">$q</span> <span class="o">=</span> <span class="nb">strtolower</span><span class="p">(</span><span class="nv">$q</span><span class="p">);</span>
+      <span class="nv">$len</span><span class="o">=</span><span class="nb">strlen</span><span class="p">(</span><span class="nv">$q</span><span class="p">);</span>
+        <span class="k">foreach</span><span class="p">(</span><span class="nv">$a</span> <span class="k">as</span> <span class="nv">$name</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">stristr</span><span class="p">(</span><span class="nv">$q</span><span class="p">,</span> <span class="nb">substr</span><span class="p">(</span><span class="nv">$name</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nv">$len</span><span class="p">)))</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$hint</span> <span class="o">===</span> <span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$hint</span> <span class="o">=</span> <span class="nv">$name</span><span class="p">;</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+       <span class="nv">$hint</span> <span class="o">.=</span> <span class="s2">&quot;, </span><span class="si">$name</span><span class="s2">&quot;</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+     <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="c1">// Output &quot;no suggestion&quot; if no hint was found or output correct values</span>
+  <span class="k">echo</span> <span class="nv">$hint</span> <span class="o">===</span> <span class="s2">&quot;&quot;</span> <span class="o">?</span> <span class="s2">&quot;no suggestion&quot;</span> <span class="o">:</span> <span class="nv">$hint</span><span class="p">;</span>
+  <span class="cp">?&gt;</span><span class="x"></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="exemple-de-base-de-donnees-ajax">
+<h2>Exemple de base de données AJAX<a class="headerlink" href="#exemple-de-base-de-donnees-ajax" title="Lien permanent vers ce titre">¶</a></h2>
+<p>AJAX peut être utilisé pour une communication interactive avec une base de données.
+Exemple de base de données AJAX</p>
+<p>L’exemple suivant montre comment une page Web peut récupérer des informations à partir d’une base de données avec AJAX :</p>
+<p>Exemple expliqué</p>
+<p>Dans l’exemple ci-dessus, lorsqu’un utilisateur sélectionne une personne dans la liste déroulante ci-dessus, une fonction appelée « showUser() » est exécutée.</p>
+<p>La fonction est déclenchée par l’événement onchange.</p>
+<p>Voici le code HTML :</p>
+<p>Exemple</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">&lt;html&gt;</span>
+<span class="x">&lt;head&gt;</span>
+<span class="x">&lt;script&gt;</span>
+<span class="x">    function showUser(str) {</span>
+<span class="x">        if (str == &quot;&quot;) {</span>
+<span class="x">          document.getElementById(&quot;txtHint&quot;).innerHTML = &quot;&quot;;</span>
+<span class="x">          return;</span>
+<span class="x">        } else {</span>
+<span class="x">        var xmlhttp = new XMLHttpRequest();</span>
+<span class="x">        xmlhttp.onreadystatechange = function() {</span>
+<span class="x">        if (this.readyState == 4 &amp;&amp; this.status == 200) {</span>
+<span class="x">            document.getElementById(&quot;txtHint&quot;).innerHTML = this.responseText;</span>
+<span class="x">        }</span>
+<span class="x">    };</span>
+<span class="x">     xmlhttp.open(&quot;GET&quot;,&quot;getuser.php?q=&quot;+str,true);</span>
+<span class="x">     xmlhttp.send();</span>
+<span class="x">     }</span>
+<span class="x">  }</span>
+<span class="x"> &lt;/script&gt;</span>
+<span class="x">&lt;/head&gt;</span>
+<span class="x">&lt;body&gt;</span>
+
+<span class="x">&lt;form&gt;</span>
+<span class="x">    &lt;select name=&quot;users&quot; onchange=&quot;showUser(this.value)&quot;&gt;</span>
+<span class="x">    &lt;option value=&quot;&quot;&gt;Select a person:&lt;/option&gt;</span>
+<span class="x">    &lt;option value=&quot;1&quot;&gt;Peter Griffin&lt;/option&gt;</span>
+<span class="x">    &lt;option value=&quot;2&quot;&gt;Lois Griffin&lt;/option&gt;</span>
+<span class="x">    &lt;option value=&quot;3&quot;&gt;Joseph Swanson&lt;/option&gt;</span>
+<span class="x">    &lt;option value=&quot;4&quot;&gt;Glenn Quagmire&lt;/option&gt;</span>
+<span class="x">    &lt;/select&gt;</span>
+<span class="x">&lt;/form&gt;</span>
+<span class="x">&lt;br&gt;</span>
+<span class="x">&lt;div id=&quot;txtHint&quot;&gt;&lt;b&gt;Person info will be listed here...&lt;/b&gt;&lt;/div&gt;</span>
+
+<span class="x">&lt;/body&gt;</span>
+<span class="x"> &lt;/html&gt;</span>
+</pre></div>
+</div>
+<p>Explication du code :</p>
+<p>Tout d’abord, vérifiez si la personne est sélectionnée. Si aucune personne n’est sélectionnée (str == «  »), effacez le contenu de txtHint et quittez la fonction. Si une personne est sélectionnée, procédez comme suit :</p>
+<blockquote>
+<div><p>Créer un objet XMLHttpRequest
+Créer la fonction à exécuter lorsque la réponse du serveur est prête
+Envoyer la demande à un fichier sur le serveur
+Notez qu’un paramètre (q) est ajouté à l’URL (avec le contenu de la liste déroulante)</p>
+</div></blockquote>
+<div class="section" id="le-fichier-php">
+<h3>Le fichier PHP<a class="headerlink" href="#le-fichier-php" title="Lien permanent vers ce titre">¶</a></h3>
+<p>La page sur le serveur appelée par le JavaScript ci-dessus est un fichier PHP appelé « getuser.php ».</p>
+<p>Le code source dans « getuser.php » exécute une requête sur une base de données MySQL et renvoie le résultat dans une table HTML :</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x"> &lt;!DOCTYPE html&gt;</span>
+<span class="x"> &lt;html&gt;</span>
+<span class="x"> &lt;head&gt;</span>
+<span class="x">    &lt;style&gt;</span>
+<span class="x">       table {</span>
+<span class="x">         width: 100%;</span>
+<span class="x">         border-collapse: collapse;</span>
+<span class="x">      }</span>
+<span class="x">      table, td, th {</span>
+<span class="x">         border: 1px solid black;</span>
+<span class="x">         padding: 5px;</span>
+<span class="x">      }</span>
+
+<span class="x">      th {text-align: left;}</span>
+<span class="x">   &lt;/style&gt;</span>
+<span class="x">&lt;/head&gt;</span>
+<span class="x">&lt;body&gt;</span>
+
+<span class="cp">&lt;?php</span>
+    <span class="nv">$q</span> <span class="o">=</span> <span class="nb">intval</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;q&#39;</span><span class="p">]);</span>
+    <span class="nv">$con</span> <span class="o">=</span> <span class="nb">mysqli_connect</span><span class="p">(</span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span><span class="s1">&#39;peter&#39;</span><span class="p">,</span><span class="s1">&#39;abc123&#39;</span><span class="p">,</span><span class="s1">&#39;my_db&#39;</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$con</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">die</span><span class="p">(</span><span class="s1">&#39;Could not connect: &#39;</span> <span class="o">.</span> <span class="nx">mysqli_error</span><span class="p">(</span><span class="nv">$con</span><span class="p">));</span>
+    <span class="p">}</span>
+    <span class="nx">mysqli_select_db</span><span class="p">(</span><span class="nv">$con</span><span class="p">,</span><span class="s2">&quot;ajax_demo&quot;</span><span class="p">);</span>
+    <span class="nv">$sql</span><span class="o">=</span><span class="s2">&quot;SELECT * FROM user WHERE id = &#39;&quot;</span><span class="o">.</span><span class="nv">$q</span><span class="o">.</span><span class="s2">&quot;&#39;&quot;</span><span class="p">;</span>
+    <span class="nv">$result</span> <span class="o">=</span> <span class="nx">mysqli_query</span><span class="p">(</span><span class="nv">$con</span><span class="p">,</span><span class="nv">$sql</span><span class="p">);</span>
+    <span class="k">echo</span> <span class="s2">&quot;&lt;table&gt;</span>
+<span class="s2">    &lt;tr&gt;</span>
+<span class="s2">        &lt;th&gt;Firstname&lt;/th&gt;</span>
+<span class="s2">        &lt;th&gt;Lastname&lt;/th&gt;</span>
+<span class="s2">        &lt;th&gt;Age&lt;/th&gt;</span>
+<span class="s2">        &lt;th&gt;Hometown&lt;/th&gt;</span>
+<span class="s2">        &lt;th&gt;Job&lt;/th&gt;</span>
+<span class="s2">    &lt;/tr&gt;&quot;</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="nv">$row</span> <span class="o">=</span> <span class="nx">mysqli_fetch_array</span><span class="p">(</span><span class="nv">$result</span><span class="p">))</span> <span class="p">{</span>
+            <span class="k">echo</span> <span class="s2">&quot;&lt;tr&gt;&quot;</span><span class="p">;</span>
+            <span class="k">echo</span> <span class="s2">&quot;&lt;td&gt;&quot;</span> <span class="o">.</span> <span class="nv">$row</span><span class="p">[</span><span class="s1">&#39;FirstName&#39;</span><span class="p">]</span> <span class="o">.</span> <span class="s2">&quot;&lt;/td&gt;&quot;</span><span class="p">;</span>
+            <span class="k">echo</span> <span class="s2">&quot;&lt;td&gt;&quot;</span> <span class="o">.</span> <span class="nv">$row</span><span class="p">[</span><span class="s1">&#39;LastName&#39;</span><span class="p">]</span> <span class="o">.</span> <span class="s2">&quot;&lt;/td&gt;&quot;</span><span class="p">;</span>
+            <span class="k">echo</span> <span class="s2">&quot;&lt;td&gt;&quot;</span> <span class="o">.</span> <span class="nv">$row</span><span class="p">[</span><span class="s1">&#39;Age&#39;</span><span class="p">]</span> <span class="o">.</span> <span class="s2">&quot;&lt;/td&gt;&quot;</span><span class="p">;</span>
+            <span class="k">echo</span> <span class="s2">&quot;&lt;td&gt;&quot;</span> <span class="o">.</span> <span class="nv">$row</span><span class="p">[</span><span class="s1">&#39;Hometown&#39;</span><span class="p">]</span> <span class="o">.</span> <span class="s2">&quot;&lt;/td&gt;&quot;</span><span class="p">;</span>
+            <span class="k">echo</span> <span class="s2">&quot;&lt;td&gt;&quot;</span> <span class="o">.</span> <span class="nv">$row</span><span class="p">[</span><span class="s1">&#39;Job&#39;</span><span class="p">]</span> <span class="o">.</span> <span class="s2">&quot;&lt;/td&gt;&quot;</span><span class="p">;</span>
+            <span class="k">echo</span> <span class="s2">&quot;&lt;/tr&gt;&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">echo</span> <span class="s2">&quot;&lt;/table&gt;&quot;</span><span class="p">;</span>
+    <span class="nx">mysqli_close</span><span class="p">(</span><span class="nv">$con</span><span class="p">);</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+<span class="x">&lt;/body&gt;</span>
+<span class="x">&lt;/html&gt;</span>
+</pre></div>
+</div>
+<p>Explication : Lorsque la requête est envoyée du JavaScript vers le fichier PHP, les événements suivants se produisent :</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>PHP ouvre une connexion à un serveur MySQL</p></li>
+<li><p>La bonne personne est trouvée</p></li>
+<li><p>Un tableau HTML est créé, rempli de données et renvoyé à l’espace réservé « txtHint »</p></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">WEB Dynamique</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="html_css.html">HTML, XHTML et CSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="javascript.html">JAVASCRIPT WEB APIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="javascript.html#types-de-donnees-interface">Types de données interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="javascript.html#les-interfaces-et-les-objets">Les interfaces et les objets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="javascript.html#interface-essentielles-du-dom">Interface essentielles du DOM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="javascript.html#test-de-l-api-dom">Test de l’API DOM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graphics.html">GRAPHIQUES</a></li>
+<li class="toctree-l1"><a class="reference internal" href="audio_video.html">Audio et Vidéo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accessibility.html">Accessibilité</a></li>
+<li class="toctree-l1"><a class="reference internal" href="inter.html">Internationalisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="php.html">PHP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="php.html#syntaxe-de-php">Syntaxe de PHP</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">PHP - Présentation AJAX</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#qu-est-ce-qu-ajax">Qu’est-ce qu’AJAX ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ajax-est-base-sur-les-normes-internet">AJAX est basé sur les normes Internet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ajax-et-php">AJAX et PHP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exemple-de-base-de-donnees-ajax">Exemple de base de données AJAX</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ws.html">Services Web</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wasm.html">WebAssembly ou WASM</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="php.html" title="Chapitre précédent">PHP</a></li>
+      <li>Next: <a href="ws.html" title="Chapitre suivant">Services Web</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Recherche rapide</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Emery Assogba.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.3.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/ajax.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
